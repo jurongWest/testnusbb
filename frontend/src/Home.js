@@ -51,7 +51,6 @@ function Home() {
   const [markers, setMarkers] = useState([]); // Add this line
   const [venues, setVenues] = useState([]);
   const [leafletMarkers, setLeafletMarkers] = useState([]);
-  const [toiletComment, setToiletComment] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:8081/toiletdata')

@@ -1,6 +1,5 @@
 import React from 'react';
 import ListItem from './ListItem';
-import StarRatings from 'react-star-ratings';
 
 function VenueList({ venues, selectedMarker, filter, setSelectedMarker, onClick, leafletMarkers, ...props }) {
     const filteredVenues = venues ? venues.filter(venue => 

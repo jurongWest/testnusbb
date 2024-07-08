@@ -6,7 +6,7 @@ import Home from './Home'
 import Reports from './Reports'
 import Reviews from './Reviews'
 import UserContext from './UserContext';
-import ViewReports from './ViewReports'
+import ViewReports from './ViewReports';
 
 
 function App() {
