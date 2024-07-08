@@ -1,5 +1,9 @@
-const { Pool } = require('pg')
-require('dotenv').config()
+const { Pool } = require('pg');
+const express = require('express');
+const router = express.Router();
+require('dotenv').config();
+
+const app = express();
 
 const pool = new Pool({
   connectionString: "postgres://default:cTo9Wy4xXIfe@ep-cold-voice-a10pkji7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
@@ -10,7 +14,7 @@ pool.connect(function(err) {
         console.error('Error connecting to the database: ' + err.stack);
         return;
     }
-    console.log('Connected to the database as id ' + db.threadId);
+    console.log('Connected to the database as id ' + pool.threadId);
 });
 
 app.post('/nusbbtest', (req, res) => {
