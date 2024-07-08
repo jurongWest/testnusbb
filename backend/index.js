@@ -90,8 +90,13 @@ router.get("/reviews", (req, res) => {
 
 // server side add review
 app.post("/reviews", (req, res) => {
+  console.log(req.body);
+  const toiletName = req.body.toiletName;
+  const rating = req.body.rating;
+  const comments = req.body.comments;
+  const email = req.body.email ? req.body.email[0] : null;
   const sql = "INSERT INTO reviews (toiletName, rating, comments, useremail, created_at) VALUES ($1, $2, $3, $4, DEFAULT)";
-  pool.query(sql, [req.body.toiletName, req.body.rating, req.body.comments, req.body.email], (err, data) => {
+  pool.query(sql, [toiletName, rating, comments, email], (err, data) => {
       if (err) {
           console.error('Error executing query: ' + err.stack);
           return res.json("Error");
