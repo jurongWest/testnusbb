@@ -38,6 +38,7 @@ function Login() {
                         navigate('/home');
                     }
                 } else {
+                    console.log(res.data)
                     alert("No record exists")
                 }
             })
