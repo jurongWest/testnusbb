@@ -1,0 +1,19 @@
+.divider {
+    border: none;
+    border-top: 1px solid #ddd; /* Change color as needed */
+    margin: 10px 0; /* Adjust as needed */
+  }
+
+  .selected-venue {
+    position: absolute;
+    top: 0; /* Adjust as needed */
+    width: 100%; /* Add this to make the selected venue take up the full width of the wrapper */
+    z-index: 1; /* Add this to make the selected venue appear on top of the venue list */
+  }
+  
+  .venue-list {
+    position: absolute; /* Add this to position the venue list relative to the venue wrapper */
+    top: 0; /* Adjust as needed */
+    width: 100%; /* Add this to make the venue list take up the full width of the wrapper */
+    margin-top: 220px;
+  }

@@ -1,0 +1,36 @@
+.full-width-table {
+    width: 100%;
+    background-color: #5379bf;
+    color: black;
+    text-align: left;
+    padding: 8px;
+    
+  }
+
+  .full-width-table th {
+    background-color: #808080; /* Grey background */
+    color: white; /* White text */
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding-left: 10px;
+  }
+  
+  .full-width-table tr:nth-child(odd) {
+    background-color: #ffffff; /* Blue background for even rows */
+  }
+  
+  .full-width-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light grey background for odd rows */
+  }
+
+  .full-width-table td, .full-width-table th {
+    padding-left: 10px; /* Adjust this value to increase or decrease the space */
+  }
+
+  .table-margin {
+    margin-top: 20px; /* Adjust this value to increase or decrease the space */
+  }
+
+  .details-column {
+    width: 60%; /* Adjust this value to increase or decrease the width */
+  }

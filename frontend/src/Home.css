@@ -1,0 +1,137 @@
+.home-container {
+  background-color: #194274;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.button {
+  background-color: #819c9e;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 25px;
+  font-family: 'Indie Flower', cursive;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1; /* This will make the content take all available space */
+}
+
+.SideBar {
+  position: sticky;
+  top: 0;
+  width: 35%;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 57%;
+}
+
+.map-container {
+  width: 100%;
+  height: 80vh;
+  margin-top: 5.5px;
+  display: flex; /* Add this line */
+  justify-content: center; /* Add this line */
+  align-items: center; /* Add this line */
+}
+
+.search-bar {
+  width: 50%; /* Make the input field take up the full width of its container */
+  padding: 10px; /* Add some padding to make the input field taller */
+  margin-left: 53px;;
+  margin-top: 150px;
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 175px; 
+  height: 105px; 
+  width: auto;
+  padding: 10px;
+  border-radius: 25%;
+}
+
+.logo-text {
+  position: absolute;
+  top: 35px;
+  left: 290px; 
+  height: 60px; 
+  width: 650px; 
+  padding: 10px;
+}
+
+.navigation-panel {
+  width: 7%;
+  height: 100vh;
+  background-color: #0D1E34;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center; 
+  flex-direction: column; 
+}
+
+.navi-button img {
+  width: 70px; 
+  height: 70px;
+  position: relative;
+}
+
+.navi-button p {
+  text-align: center;
+  color: white;
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.leader-button img{
+  width: 70px; 
+  height: 70px;
+  margin-left: 11px;
+}
+
+.leader-button p{
+  text-align: center;
+  color: white;
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.bookmark-button img{
+  width: 70px; 
+  height: 70px;
+  margin-left: 4.5px;
+}
+
+.bookmark-button p{
+  text-align: center;
+  color: white;
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.custom-link {
+  color: #ffffff;
+  text-decoration: none;
+}
