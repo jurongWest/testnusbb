@@ -1,9 +1,11 @@
 const { Pool } = require('pg');
 const express = require('express');
 const router = express.Router();
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+app.use(cors());
 
 const pool = new Pool({
   connectionString: "postgres://default:cTo9Wy4xXIfe@ep-cold-voice-a10pkji7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
@@ -151,15 +153,15 @@ router.delete("/reviews/:id", (req, res) => {
 })
 
 app.get('/toiletdata', (req, res) => {
-  const query = `SELECT toiletname, popUp, rating, latitude, longitude, comment FROM toiletdata`;
+  const query = `SELECT toiletname, popUp, rating, latitude, longitude FROM toiletdata`;
   pool.query(query, (err, results) => {
     if (err) {
       console.error(err);
       res.status(500).send('Server error');
       return;
     } else {
-      console.log(results);
-      res.json(results);
+      console.log(results.rows);
+      res.json(results.rows);
     }
   });
 });
