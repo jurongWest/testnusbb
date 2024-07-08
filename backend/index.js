@@ -270,7 +270,3 @@ app.put('/reports/:id', (req, res) => {
 
 module.exports = app;
 
-app.listen(8081, () => {
-  console.log("listening");
-})
-
