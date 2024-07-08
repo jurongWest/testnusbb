@@ -19,7 +19,7 @@ pool.connect(function(err) {
     console.log('Connected to the database as id ' + pool.threadId);
 });
 
-app.post('/nusbbtest', (req, res) => {
+app.post('/signup', (req, res) => {
     console.log(req.body);
     const checkSql = "SELECT * FROM users WHERE email = $1";
     pool.query(checkSql, [req.body.email], (err, data) => {
