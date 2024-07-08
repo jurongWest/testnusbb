@@ -57,7 +57,7 @@ function Home() {
       .then(response => {
         const fetchedMarkers = response.data.map(toilet => ({
           geocode: [toilet.latitude, toilet.longitude],
-          popUp: toilet.popUp,
+          popUp: toilet.popup,
           average_rating: toilet.rating,
           comment: toilet.comment,
           comments: [] // Add this line to initialize the comments array

@@ -5,6 +5,7 @@ import StarRatings from 'react-star-ratings';
 
 function ListItem({ popUp, selected, description, averageRating, comments, onClick, ...props }) {
     console.log(comments); 
+    console.log(popUp);
   return (
     <div 
     className="list-item" onClick={onClick} {...props}
