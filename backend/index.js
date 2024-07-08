@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const pool = new Pool({
   connectionString: "postgres://default:cTo9Wy4xXIfe@ep-cold-voice-a10pkji7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
@@ -16,12 +17,12 @@ pool.connect(function(err) {
         console.error('Error connecting to the database: ' + err.stack);
         return;
     }
-    console.log('Connected to the database as id ' + pool.threadId);
+    console.log('Connected to the database');
 });
 
 app.post('/signup', (req, res) => {
     console.log(req.body);
-    const checkSql = "SELECT * FROM users WHERE email = $1";
+    const checkSql = 'SELECT * FROM users WHERE email = $1';
     pool.query(checkSql, [req.body.email], (err, data) => {
         if (err) {
             console.error('Error executing query: ' + err.stack);
@@ -30,9 +31,8 @@ app.post('/signup', (req, res) => {
         if (data.length > 0) {
             return res.json("You already have an account");
         } else {
-            const sql = "INSERT INTO users (`id`, `name`, `email`, `password`, `role`) VALUES ($1,$2,$3,$4, 'visitor')";
+            const sql = "INSERT INTO users (name, email, password, role) VALUES ($1,$2,$3, 'user')";
             const values = [
-                req.body.id,
                 req.body.name,
                 req.body.email,
                 req.body.password
@@ -50,25 +50,28 @@ app.post('/signup', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    const sql = "SELECT * FROM users WHERE email = $1 AND password = $2";
-    pool.query(sql, [req.body.email, req.body.password], (err, data) => {
+  const email = req.body.email[0];
+  const password = req.body.password[0];
+    const sql = 'SELECT * FROM users WHERE email = $1 AND password = $2';
+    pool.query(sql, [email, password], (err, data) => {
         if (err) {
             console.error('Error executing query: ' + err.stack);
             return res.json("Error");
         }
+        console.log('Data:', data.rows)
         if (data.rows.length > 0) {
-            const loginSql = "INSERT INTO login (email, password) VALUES ($1, $2)";
-            pool.query(loginSql, [req.body.email, req.body.password], (loginErr, loginData) => {
-                if (loginErr) {
-                    console.error('Error executing query: ' + loginErr.stack);
-                    return res.json("Error");
-                }
-                return res.json({ message: "Login Success", role: data[0].role });
-            });
-        } else {
-            return res.json("Login Failed");
-        }
-    })
+          const loginSql = 'INSERT INTO login (email, password) VALUES ($1, $2)';
+          pool.query(loginSql, [req.body.email, req.body.password], (loginErr, loginData) => {
+              if (loginErr) {
+                  console.error('Error executing query: ' + loginErr.stack);
+                  return res.json("Error");
+              }
+              return res.json({ message: "Login Success", role: data.rows[0].role });
+          });
+      } else {
+          return res.json("Login Failed");
+      }
+  })
 })
 
 
