@@ -107,7 +107,7 @@ app.post("/reviews", (req, res) => {
       }
 
       const insertCommentsSql = "INSERT INTO comments (toiletName, comments) VALUES ($1, $2)";
-      pool.query(insertCommentsSql, [data.insertId, req.body.toiletName, req.body.comments], (insertErr, insertData) => {
+      pool.query(insertCommentsSql, [req.body.toiletName, req.body.comments], (insertErr, insertData) => {
           if (insertErr) {
               console.error('Error executing query: ' + insertErr.stack);
               return res.json("Error");
