@@ -16,24 +16,13 @@ const pool = new Pool({
   connectionString: "postgres://default:cTo9Wy4xXIfe@ep-cold-voice-a10pkji7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
 })
 
-module.exports = (req, res) => {
-  pool.connect((err, client, release) => {
+pool.connect(function(err) {
     if (err) {
-      res.status(500).json({ error: 'Error connecting to the database' });
-      return;
+        console.error('Error connecting to the database: ' + err.stack);
+        return;
     }
-
-    client.query('SELECT NOW()', (err, result) => {
-      release();
-
-      if (err) {
-        res.status(500).json({ error: 'Error running query' });
-      } else {
-        res.status(200).json({ timestamp: result.rows[0] });
-      }
-    });
-  });
-};
+    console.log('Connected to the database');
+});
 
 app.post('/signup', (req, res) => {
     console.log(req.body);
