@@ -5,11 +5,12 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+app.use(express.json());
 app.use(cors({
   origin: 'https://testnusbb-client.vercel.app'
 }));
 app.options('*', cors());
-app.use(express.json());
+
 
 const pool = new Pool({
   connectionString: "postgres://default:cTo9Wy4xXIfe@ep-cold-voice-a10pkji7-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
