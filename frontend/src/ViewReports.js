@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import './ViewReports.css'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import './ViewReports.css';
+import axios from 'axios';
 
 function ViewReports() {
   const [reports, setReports] = useState([]);
