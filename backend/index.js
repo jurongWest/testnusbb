@@ -8,6 +8,7 @@ const app = express();
 app.use(cors({
   origin: 'https://testnusbb-client.vercel.app'
 }));
+app.options('*', cors());
 app.use(express.json());
 
 const pool = new Pool({
