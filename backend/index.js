@@ -54,15 +54,16 @@ app.post('/signup', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  const email = req.body.email[0];
+  const password = req.body.password[0];
     const sql = 'SELECT * FROM users WHERE email = $1 AND password = $2';
     pool.query(sql, [email, password], (err, data) => {
         if (err) {
             console.error('Error executing query: ' + err.stack);
             return res.json("Error");
         }
-        if (data.length > 0) {
+        console.log('Data:', data.rows)
+        if (data.rows.length > 0) {
           const loginSql = 'INSERT INTO login (email, password) VALUES ($1, $2)';
           pool.query(loginSql, [req.body.email, req.body.password], (loginErr, loginData) => {
               if (loginErr) {
