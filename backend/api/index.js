@@ -116,7 +116,7 @@ app.post("/reviews", (req, res) => {
           const updateQuery = `
               UPDATE toiletdata
               SET rating = (SELECT COALESCE(AVG(rating), 0) FROM reviews WHERE toiletName = $1)
-              WHERE toiletname = $2
+              WHERE toiletname = $1
           `;
           pool.query(updateQuery, [req.body.toiletName, req.body.toiletName], (updateErr, updateData) => {
               if (updateErr) {
