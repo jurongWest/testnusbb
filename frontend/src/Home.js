@@ -15,35 +15,6 @@ import pin from './image/bookmark.png';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 
-// const setmarkers = [
-//   {
-//     geocode: [1.294914042356082, 103.77377980267396],
-//     popUp: "COM1 Toilet (Beside Career Consulting Room)",
-//     image: toilet1,
-//   },
-//   {
-//     geocode: [1.2942827296388428, 103.77411065078523],
-//     popUp: "COM2 Toilet (Beside Furnace)",
-//     image: toilet2
-//   },
-//   {
-//     geocode: [1.2973577459082666, 103.77053415333361],
-//     popUp: "SDE3 Toilet (Level 1)",
-//     image: toilet3
-//   },
-//   {
-//     geocode: [1.2963114108763067, 103.7803565548167],
-//     popUp: "S17 Toilet (Level 2)",
-//     image: toilet3
-//   },
-//   {
-//     geocode: [1.2952132040063862, 103.78164162557187],
-//     popUp: "MD6 Toilet (Level 3)",
-//     image: toilet3
-//   }
-//   // Add more markers as needed
-// ]
-
 function Home() {
   const mapRef = useRef();
   const [selectedMarker, setSelectedMarker] = useState(null); // Add this line
@@ -75,6 +46,7 @@ function Home() {
         // Wait for all comments to be fetched
         Promise.all(fetchCommentsPromises)
           .then(() => {
+            fetchedMarkers.sort((a, b) => a.popUp.localeCompare(b.popUp));
             setMarkers(fetchedMarkers);
           });
       })
