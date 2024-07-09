@@ -24,7 +24,7 @@ function Reports() {
   }
 
   const loadOptions = (inputValue, callback) => {
-    axios.get(`http://localhost:8081/toiletdata`)
+    axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata`)
       .then(res => {
         const options = res.data.map(toilet => ({ value: toilet.toiletname, label: toilet.toiletname }));
         callback(options);
@@ -51,7 +51,7 @@ function Reports() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validate()) {
-      axios.post('http://localhost:8081/reports', { ...values, email: userEmail })
+      axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/reports', { ...values, email: userEmail })
         .then(res => {
           
           navigate('/reports');

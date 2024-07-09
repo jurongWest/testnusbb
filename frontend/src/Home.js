@@ -53,7 +53,7 @@ function Home() {
   const [leafletMarkers, setLeafletMarkers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/toiletdata')
+    axios.get('https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata')
       .then(response => {
         const fetchedMarkers = response.data.map(toilet => ({
           geocode: [toilet.latitude, toilet.longitude],
@@ -65,7 +65,7 @@ function Home() {
   
         // Fetch comments for each toilet
         const fetchCommentsPromises = fetchedMarkers.map((marker, index) => {
-          return axios.get(`http://localhost:8081/comments/${marker.popUp}`)
+          return axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/comments/${marker.popUp}`)
             .then(response => {
               // Add the comments to the marker
               fetchedMarkers[index].comments = response.data;
@@ -131,7 +131,7 @@ function Home() {
 
   useEffect(() => {
     // Call the API endpoint to update the ratings
-    axios.get('http://localhost:8081/updateRatings')
+    axios.get('https://testnusbb-git-main-jurongs-projects.vercel.app/updateRatings')
       .then(response => {
         console.log(response.data);
       })

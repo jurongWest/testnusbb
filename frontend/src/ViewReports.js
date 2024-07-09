@@ -7,7 +7,7 @@ function ViewReports() {
   const [statusFilter, setStatusFilter] = useState('all');
 
   useEffect(() => {
-    fetch('http://localhost:8081/reports')
+    fetch('https://testnusbb-git-main-jurongs-projects.vercel.app/reports')
       .then(res => {
         if (!res.ok) { // res.ok is false if the status code is 4xx or 5xx
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -25,7 +25,7 @@ function ViewReports() {
 
   function updateStatus(idcolumn, newStatus) {
     // Send a request to your server to update the status
-    axios.put(`http://localhost:8081/reports/${idcolumn}`, {
+    axios.put(`https://testnusbb-git-main-jurongs-projects.vercel.app/reports/${idcolumn}`, {
       newStatus
     })
     .then(response => {

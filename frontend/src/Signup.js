@@ -26,7 +26,7 @@ function Signup() {
     const err = Validation(values);
     setErrors(err);
     if(errors.name ==="" && errors.email ==="" && errors.password ===""){
-      axios.post('http://localhost:8081/signup', values)
+      axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/signup', values)
       .then(res => 
         navigate('/')
       )

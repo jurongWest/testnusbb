@@ -26,7 +26,7 @@ function Review() {
   }
 
   const loadOptions = (inputValue, callback) => {
-    axios.get(`http://localhost:8081/toiletdata?search=${inputValue}`)
+    axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata?search=${inputValue}`)
       .then(res => {
         const options = res.data
           .map(toilet => ({ value: toilet.toiletname, label: toilet.toiletname }))
@@ -55,7 +55,7 @@ function Review() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validate()) {
-      axios.post('http://localhost:8081/reviews', { ...values, email: userEmail })
+      axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/reviews', { ...values, email: userEmail })
         .then(res => {
           
           navigate('/reviews');
