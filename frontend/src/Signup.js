@@ -42,13 +42,13 @@ function Signup() {
         <div>
             <img src={nusbbImage} alt="NUSBB" className='move-left signup-logo' style={{height: 'auto', objectFit: 'contain'}} />
         </div>
-        <div className='d-flex flex-column justify-content-center align-items-center move-left'>
+        <div className='d-flex flex-column justify-content-center align-items-center signup'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Sign up</h2>
             <form action="" onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label htmlFor="name" className='white-text'><strong>Name</strong></label>
                     <input type="name" placeholder='Enter Name' name='name'
-                    onChange={handleInput} className='form-control rounded-0 small-input'/>
+                    onChange={handleInput} className='form-control rounded-0 signup-small-input'/>
                     {errors.name && <span className='text-danger'>{errors.name}</span>}
                 </div>
                 <div className='mb-3'>

@@ -17,15 +17,14 @@
     color: white;
 }
 
-.move-right {
-    margin-left: 15%;
+.move-left {
+    margin-right: 10%;
     border-radius: 5%;
 }
 
-.move-left {
-    margin-right: 8.5%;
-    border-radius: 5%;
-}
+.d-flex.flex-column.justify-content-center.align-items-center.signup {
+    width: 50%; /* Adjust this value as needed */
+  }
 
 @media (max-width: 768px) {
     .main-box {

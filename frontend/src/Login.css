@@ -22,11 +22,6 @@
     border-radius: 5%;
 }
 
-.move-left {
-    margin-right: 8.5%;
-    border-radius: 5%;
-}
-
 @media (max-width: 768px) {
     .login-main-box {
         background-color: #48474780;
