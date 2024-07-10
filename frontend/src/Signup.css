@@ -28,17 +28,23 @@
 }
 
 @media (max-width: 768px) {
+    .main-box {
+        background-color: rgba(72, 71, 71, 0.5);
+        width: 80%; /* adjust as needed */
+        height: 500px; /* adjust as needed */
+        border-radius: 25px; /* adjust as needed */
+    }
+    .move-left {
+        margin-right: 13%;
+        border-radius: 5%;
+    }
     .signup-logo {
       width: 80px;
       height: auto;
       object-fit: contain;
       position: absolute;
       top: 2%;
-      left: 2%;
-      transform: translateX(-50%);
-    }
-    .move-left {
-        margin-left: 10%;
+      left: 5%;
     }
   }
 

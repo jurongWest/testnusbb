@@ -48,7 +48,7 @@ function Login() {
 
   return (
     <div style={{ backgroundImage: `url(${backgroundImage})` }} className='d-flex justify-content-center align-items-center vh-100'>
-        <div className='main-box left-align d-flex flex-row justify-content-center align-items-center' >
+        <div className='login-main-box left-align d-flex flex-row justify-content-center align-items-center' >
         <div className='d-flex flex-column justify-content-center align-items-center'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Login</h2>
             <form action="" onSubmit={handleSubmit}>
