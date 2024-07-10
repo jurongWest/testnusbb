@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Validation from './SignupValidation';
 import axios from 'axios'
 import backgroundImage from './image/homepage.jpeg';
-import './Login.css'
+import './Signup.css'
 import nusbbImage from './image/NUSBB.png';
 
 function Signup() {
@@ -40,7 +40,7 @@ function Signup() {
     <div style={{ backgroundImage: `url(${backgroundImage})` }} className='d-flex justify-content-center align-items-center vh-100'>
         <div className='main-box left-align d-flex flex-row justify-content-between align-items-center'>
         <div>
-            <img src={nusbbImage} alt="NUSBB" className='move-left' />
+            <img src={nusbbImage} alt="NUSBB" className='move-left signup-logo' style={{height: 'auto', objectFit: 'contain'}} />
         </div>
         <div className='d-flex flex-column justify-content-center align-items-center move-left'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Sign up</h2>
