@@ -41,6 +41,9 @@
       top: 2%;
       left: 5%;
     }
+    .d-flex.flex-column.justify-content-center.align-items-center.signup {
+        width: 100%; /* Adjust this value as needed */
+      }
   }
 
 
