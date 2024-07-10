@@ -135,3 +135,96 @@
   color: #ffffff;
   text-decoration: none;
 }
+
+
+@media (max-width: 768px) {
+  .logo {
+    position: absolute;
+    top: 15px;
+    left: 10px; 
+    height: 80px; 
+    width: auto;
+    padding: 10px;
+    border-radius: 25%;
+  }
+  
+  .logo-text {
+    position: absolute;
+    top: 35px;
+    left: 90px; 
+    height: 50px; 
+    width: 300px; 
+    padding: 10px;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .navi-button img {
+    width: 30px; 
+    height: 30px;
+    position: relative;
+  }
+  
+  .navi-button p {
+    text-align: center;
+    color: white;
+    margin-top: 6px;
+    font-size: 10px;
+  }
+
+  .navigation-panel {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .leader-button img{
+    width: 30px; 
+    height: 30px;
+    margin-left: 15px;
+  }
+  
+  .leader-button p{
+    text-align: center;
+    color: white;
+    margin-top: 6px;
+    font-size: 10px;
+  }
+  
+  .bookmark-button img{
+    width: 30px; 
+    height: 30px;
+    margin-left: 12px;
+  }
+  
+  .bookmark-button p{
+    text-align: center;
+    color: white;
+    margin-top: 6px;
+    font-size: 10px;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 50vh; /* Adjust this value as needed */
+  }
+
+  .SideBar {
+    position: relative;
+    top: unset;
+    width: 100%;
+  }
+
+  .content {
+    flex-direction: column;
+    position: static;
+  }
+}
