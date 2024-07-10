@@ -21,6 +21,8 @@ function Signup() {
     setValues(prev=>({...prev, [event.target.name]: event.target.value}))
   }
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit=(event)=>{
     event.preventDefault();
     const err = Validation(values);
@@ -55,11 +57,15 @@ function Signup() {
                     onChange={handleInput} className='form-control rounded-0 small-input'/>
                     {errors.email && <span className='text-danger'>{errors.email}</span>}
                 </div>
-                <div className='mb-3'>
-                    <label htmlFor="password" className='white-text'><strong>Password</strong></label>
-                    <input type="password" placeholder='Enter Password' name='password'
-                    onChange={handleInput} className='form-control rounded-0 small-input'/>
-                    {errors.password && <span className='text-danger'>{errors.password}</span>}
+                <div className='mb-3 position-relative'>
+                  <label htmlFor="password" className='white-text'><strong>Password</strong></label>
+                  <input type={showPassword ? "text" : "password"} placeholder='Enter Password' name='password'
+                  onChange={handleInput} className='form-control rounded-0 small-input'/>
+                  <button type="button" onClick={() => setShowPassword(!showPassword)} 
+                    style={{ position: 'absolute', top: '70%', right: '10px', transform: 'translateY(-50%)' }}>
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                  {errors.password && <span className='text-danger'>{errors.password}</span>}
                 </div>
                 <button className='btn btn-primary w-100 rounded-0'>Sign up</button>
                 <p className='white-text'>Discover NUS Computing toilets with us!</p>
