@@ -70,7 +70,7 @@ function Login() {
             </form>
             </div>
             <div>
-            <img src={nusbbImage} alt="NUSBB" className='ml-auto move-right login-logo' style={{ height: 'auto', objectFit: 'contain' }} />
+            <img src={nusbbImage} alt="NUSBB" className='ml-auto move-right login-logo' style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
         border-radius: 25px; /* adjust as needed */
     }
     .login-logo {
-      width: 70px;
+      width: 70px !important;
       height: auto;
       object-fit: contain;
       position: absolute;
