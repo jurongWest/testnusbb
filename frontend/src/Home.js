@@ -22,6 +22,10 @@ function Home() {
   const [markers, setMarkers] = useState([]); // Add this line
   const [venues, setVenues] = useState([]);
   const [leafletMarkers, setLeafletMarkers] = useState([]);
+  const [wheelchair, setWheelchair] = useState(false);
+  const [bidet, setBidet] = useState(false);
+  const [shower, setShower] = useState(false);
+  
 
   useEffect(() => {
     axios.get('https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata')
@@ -31,8 +35,16 @@ function Home() {
           popUp: toilet.popup,
           average_rating: toilet.rating,
           comment: toilet.comment,
+          wheelchair: toilet.wheelchair,
+          bidet: toilet.bidet,
+          shower: toilet.shower,
           comments: [] // Add this line to initialize the comments array
         }));
+
+        // Filter the markers based on the checkboxes
+      fetchedMarkers = fetchedMarkers.filter(marker => {
+        return (!wheelchair || marker.wheelchair) && (!bidet || marker.bidet) && (!shower || marker.shower);
+      });
   
         // Fetch comments for each toilet
         const fetchCommentsPromises = fetchedMarkers.map((marker, index) => {
@@ -53,7 +65,9 @@ function Home() {
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, []);
+  }, [wheelchair, bidet, shower]);
+
+
 
   useEffect(() => {
     const { current = {} } = mapRef;
@@ -112,6 +126,18 @@ function Home() {
       });
   }, []);
 
+  const handleWheelchairChange = (event) => {
+    setWheelchair(event.target.checked);
+  };
+
+  const handleBidetChange = (event) => {
+    setBidet(event.target.checked);
+  };
+
+  const handleShowerChange = (event) => {
+    setShower(event.target.checked);
+  };
+
 
   function handleMarkerClick(marker, idx) {
     setSelectedMarker(marker);
@@ -150,6 +176,21 @@ function Home() {
       </div>
       <div className="map-wrapper">
       <input className="search-bar" type="text" placeholder="Type the name of the building" value={filter} onChange={(e) => setFilter(e.target.value)} />
+              <div className="checkbox-container">
+            <label>Filter By: </label>
+            <label>
+              <input type="checkbox" checked={wheelchair} onChange={handleWheelchairChange} />
+              Wheelchair Accessible
+            </label>
+            <label>
+              <input type="checkbox" checked={bidet} onChange={handleBidetChange} />
+              Has Bidet
+            </label>
+            <label>
+              <input type="checkbox" checked={shower} onChange={handleShowerChange} />
+              Has Shower
+            </label>
+          </div>
           <div className="map-container">
             <MapContainer
               center={[1.2966528735372962, 103.77628683989606]} // Set center to NUS
