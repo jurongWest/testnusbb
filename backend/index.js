@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: 'https://testnusbb-client.vercel.app'
+  origin: ['https://testnusbb-client.vercel.app', 'http://localhost:3000']
 }));
 app.options('*', cors());
 
@@ -165,7 +165,7 @@ router.delete("/reviews/:id", (req, res) => {
 })
 
 app.get('/toiletdata', (req, res) => {
-  const query = `SELECT toiletname, popUp, rating, latitude, longitude FROM toiletdata`;
+  const query = `SELECT toiletname, popUp, rating, latitude, longitude, bidet, shower, wheelchair FROM toiletdata`;
   pool.query(query, (err, results) => {
     if (err) {
       console.error(err);
