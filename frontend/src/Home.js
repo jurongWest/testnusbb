@@ -30,7 +30,7 @@ function Home() {
   useEffect(() => {
     axios.get('https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata')
       .then(response => {
-        const fetchedMarkers = response.data.map(toilet => ({
+        let fetchedMarkers = response.data.map(toilet => ({
           geocode: [toilet.latitude, toilet.longitude],
           popUp: toilet.popup,
           average_rating: toilet.rating,
