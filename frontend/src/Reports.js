@@ -27,6 +27,7 @@ function Reports() {
     axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata`)
       .then(res => {
         const options = res.data.map(toilet => ({ value: toilet.toiletname, label: toilet.toiletname }));
+        options.sort((a, b) => a.label.localeCompare(b.label));
         callback(options);
       });
   };
