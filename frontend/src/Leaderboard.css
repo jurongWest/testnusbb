@@ -1,0 +1,45 @@
+.home-container {
+    background-color: #194274;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+.leaderboard-header {
+    position: absolute;
+    top: 130px;
+    left: 185px;
+    color: white;
+  }
+
+.leaderboard-table {
+    position: absolute;
+    top: 180px;
+    left: 185px;
+    color: white;
+  }
+
+.leaderboard-table th, .leaderboard-table td {
+    padding: 0 20px;
+  }
+
+.leaderboard-table tr {
+    border-bottom: 1px solid white;
+    height: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .leaderboard-header {
+      position: absolute;
+      top: 22%;
+      left: 5%;
+      color: white;
+    }
+
+    .leaderboard-table {
+        position: absolute;
+        top: 30%;
+        left: 2%;
+        color: white;
+      }
+  }

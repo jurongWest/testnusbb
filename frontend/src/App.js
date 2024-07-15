@@ -7,6 +7,7 @@ import Reports from './Reports'
 import Reviews from './Reviews'
 import UserContext from './UserContext';
 import ViewReports from './ViewReports';
+import Leaderboard from './Leaderboard'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/home' element={<Home />}></Route>
         <Route path='/reviews' element={<Reviews />}></Route>
         <Route path='/viewreports' element={<ViewReports />}></Route>
+        <Route path='/leaderboard' element={<Leaderboard />}></Route>
         <Route path="/reports" element={<Reports />} />
       </Routes>
     </BrowserRouter>
