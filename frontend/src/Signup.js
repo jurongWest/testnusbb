@@ -38,9 +38,9 @@ function Signup() {
 
   return (
     <div style={{ backgroundImage: `url(${backgroundImage})` }} className='d-flex justify-content-center align-items-center vh-100'>
-        <div className='main-box left-align d-flex flex-row justify-content-between align-items-center'>
+      <img src={nusbbImage} alt="NUSBB" className="signup-logo" style={{ position: 'absolute', top: '10px', left: '10px', width: '70px', height: 'auto', objectFit: 'contain' }} />
+        <div className='main-box left-align d-flex flex-column justify-content-between align-items-center'>
         <div>
-            <img src={nusbbImage} alt="NUSBB" className='move-left signup-logo' style={{ width: '100%', height: 'auto', objectFit: 'contain'}} />
         </div>
         <div className='d-flex flex-column justify-content-center align-items-center signup'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Sign up</h2>

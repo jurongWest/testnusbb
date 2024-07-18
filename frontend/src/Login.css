@@ -1,7 +1,7 @@
 .login-main-box {
     background-color: #48474780;
     width: 50%; /* adjust as needed */
-    height: 500px; /* adjust as needed */
+    height: auto; /* adjust as needed */
     border-radius: 25px; /* adjust as needed */
 }
 
@@ -18,7 +18,7 @@
 }
 
 .move-right {
-    margin-left: 15%;
+    margin-left: 0%;
     border-radius: 5%;
 }
 
@@ -36,6 +36,11 @@
       position: absolute;
       top: 2%;
       left: -10.25%;
+    }
+
+    .move-right {
+        margin-left: 15%;
+        border-radius: 5%;
     }
   }
 

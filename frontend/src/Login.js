@@ -48,7 +48,8 @@ function Login() {
 
   return (
     <div style={{ backgroundImage: `url(${backgroundImage})` }} className='d-flex justify-content-center align-items-center vh-100'>
-        <div className='login-main-box left-align d-flex flex-row justify-content-center align-items-center' >
+        <img src={nusbbImage} alt="NUSBB" className="signup-logo" style={{ position: 'absolute', top: '10px', left: '10px', width: '70px', height: 'auto', objectFit: 'contain' }} />
+        <div className='login-main-box left-align d-flex flex-column justify-content-center align-items-center' >
         <div className='d-flex flex-column justify-content-center align-items-center'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Login</h2>
             <form action="" onSubmit={handleSubmit}>
@@ -70,7 +71,7 @@ function Login() {
             </form>
             </div>
             <div>
-            <img src={nusbbImage} alt="NUSBB" className='ml-auto move-right login-logo' style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+            
             </div>
         </div>
     </div>

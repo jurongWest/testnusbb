@@ -1,7 +1,7 @@
 .main-box {
     background-color: rgba(72, 71, 71, 0.5);
     width: 50%; /* adjust as needed */
-    height: 500px; /* adjust as needed */
+    height: auto; /* adjust as needed */
     border-radius: 25px; /* adjust as needed */
 }
 
@@ -18,9 +18,13 @@
 }
 
 .move-left {
-    margin-right: 10%;
+    margin-right: 0%;
     border-radius: 5%;
 }
+
+.signup-logo {
+    border-radius: 5%
+  }
 
 .d-flex.flex-column.justify-content-center.align-items-center.signup {
     width: 50%; /* Adjust this value as needed */
@@ -33,17 +37,8 @@
         height: 500px; /* adjust as needed */
         border-radius: 25px; /* adjust as needed */
     }
-    .signup-logo {
-      width: 70px !important;
-      height: auto;
-      object-fit: contain;
-      position: absolute;
-      top: 2%;
-      left: 5%;
-    }
-    .d-flex.flex-column.justify-content-center.align-items-center.signup {
-        width: 100%; /* Adjust this value as needed */
-      }
+    
+
   }
 
 
