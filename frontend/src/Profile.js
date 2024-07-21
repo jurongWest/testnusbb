@@ -18,7 +18,7 @@ function Profile() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app//users/${id}`)
+    axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/users/${id}`)
       .then(response => {
         setUser(response.data);
       })
