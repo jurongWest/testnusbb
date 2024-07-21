@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import './Home.css' // Import the CSS file
+import './Home.css'
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+import { useContext } from 'react';
+import UserContext from './UserContext';
 import L, { Icon } from "leaflet"
 import SideBar from './SideBar'
 import VenueList from './VenueList'
@@ -17,15 +19,17 @@ import StarRatings from 'react-star-ratings';
 
 function Home() {
   const mapRef = useRef();
-  const [selectedMarker, setSelectedMarker] = useState(null); // Add this line
+  const [selectedMarker, setSelectedMarker] = useState(null); 
   const [filter, setFilter] = useState('');
-  const [markers, setMarkers] = useState([]); // Add this line
+  const [markers, setMarkers] = useState([]); 
   const [venues, setVenues] = useState([]);
   const [leafletMarkers, setLeafletMarkers] = useState([]);
   const [wheelchair, setWheelchair] = useState(false);
   const [bidet, setBidet] = useState(false);
   const [shower, setShower] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
+  
+  const userId = sessionStorage.getItem('userId');
   
 
   useEffect(() => {
@@ -169,7 +173,7 @@ function Home() {
             <img src={report} alt="Report" />
             <p>Reports</p>
           </Link>
-          <Link to="/profile" className="bookmark-button custom-link">
+          <Link to={`/profile/${userId}`} className="bookmark-button custom-link">
             <img src={pin} alt="Bookmarks" />
             <p>Profile</p>
           </Link>

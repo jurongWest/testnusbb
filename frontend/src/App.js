@@ -24,6 +24,7 @@ function App() {
         <Route path='/viewreports' element={<ViewReports />}></Route>
         <Route path='/leaderboard' element={<Leaderboard />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/profile/:id' element={<Profile />}></Route>
         <Route path="/reports" element={<Reports />} />
       </Routes>
     </BrowserRouter>
