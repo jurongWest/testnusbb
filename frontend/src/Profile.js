@@ -63,8 +63,10 @@ function Profile() {
     <img src={accountImg} alt="Account" className="account-image" />
     {user && (
       <>
-      <strong className="user-info">Username: {user.name}</strong>
-      <strong className="user-info">User Email: {user.email}</strong>
+      <strong className="user-info">Username: </strong>
+      <p>{user.name}</p>
+      <strong className="user-info">User Email: </strong>
+      <p>{user.email}</p>
       </>
     )}
   </div>
