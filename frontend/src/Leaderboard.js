@@ -5,7 +5,7 @@ import logotext from './image/NUSBathroomBuddyText.png';
 import report from './image/report.png';
 import leaderboard from './image/leaderboard.png';
 import home from './image/home.png';
-import pin from './image/bookmark.png';
+import pin from './image/user.png';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import './Leaderboard.css';
@@ -53,9 +53,9 @@ function Leaderboard() {
           <img src={report} alt="Report" />
           <p>Reports</p>
         </Link>
-        <Link to="/bookmarks" className="bookmark-button custom-link">
+        <Link to="/profile" className="bookmark-button custom-link">
           <img src={pin} alt="Bookmarks" />
-          <p>Bookmarks</p>
+          <p>Profile</p>
         </Link>
       {/* Other navigation items go here */}
     </div>

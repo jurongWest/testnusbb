@@ -11,7 +11,7 @@ import logotext from './image/NUSBathroomBuddyText.png';
 import report from './image/report.png';
 import leaderboard from './image/leaderboard.png';
 import home from './image/home.png';
-import pin from './image/bookmark.png';
+import pin from './image/user.png';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 
@@ -25,6 +25,7 @@ function Home() {
   const [wheelchair, setWheelchair] = useState(false);
   const [bidet, setBidet] = useState(false);
   const [shower, setShower] = useState(false);
+  const [userLocation, setUserLocation] = useState(null);
   
 
   useEffect(() => {
@@ -168,9 +169,9 @@ function Home() {
             <img src={report} alt="Report" />
             <p>Reports</p>
           </Link>
-          <Link to="/bookmarks" className="bookmark-button custom-link">
+          <Link to="/profile" className="bookmark-button custom-link">
             <img src={pin} alt="Bookmarks" />
-            <p>Bookmarks</p>
+            <p>Profile</p>
           </Link>
         {/* Other navigation items go here */}
       </div>
@@ -196,13 +197,19 @@ function Home() {
               center={[1.2966528735372962, 103.77628683989606]} // Set center to NUS
               zoom={16}
               style={{ height: "90%", width: "90%" }}
-              whenCreated={mapInstance => { mapRef.current = mapInstance; }}
+              whenCreated={mapInstance => {
+                mapRef.current = mapInstance;
+                mapInstance.locate({setView: true, maxZoom: 16});
+            
+                mapInstance.on('locationfound', function(e) {
+                  setUserLocation(e.latlng);
+                });
+              }}
             >
               
               <TileLayer
                 url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-
               {markers.map((marker, idx) => (
                 <Marker 
                   key={idx} 
