@@ -18,14 +18,17 @@ function Profile() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/users/${id}`)
+    const apiEndpoint = `https://testnusbb-git-main-jurongs-projects.vercel.app/users/${id}`;
+    console.log('API endpoint:', apiEndpoint);
+    console.log('User ID:', id);
+    axios.get(apiEndpoint)
       .then(response => {
         setUser(response.data);
       })
       .catch(error => {
         console.error('There was an error!', error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="home-container">
@@ -58,7 +61,9 @@ function Profile() {
     <img src={accountImg} alt="Account" className="account-image" />
     {user && (
       <>
+      <strong className="user-info">Username:</strong>
         <h1>{user.name}</h1>
+        <strong className="user-info">User Email:</strong>
         <p>{user.email}</p>
       </>
     )}

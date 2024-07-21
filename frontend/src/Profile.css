@@ -6,3 +6,10 @@
     border-radius: 5%;
     float: left;
   }
+
+  .user-info {
+    color: white;
+    position: relative;
+    margin-left: 5%;
+    top: 25%;
+  }
