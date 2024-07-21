@@ -10,7 +10,7 @@
 
   .user-info {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 10px; 
     position: relative;
     top: 25%;
