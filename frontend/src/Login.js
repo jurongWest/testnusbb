@@ -31,7 +31,7 @@ function Login() {
             .then(res => {
                 console.log(res.data)
                 if(res.data.message === "Login Success") {
-                    setUserId(values.userId);
+                    setUserId(res.data.userId);
                     setUserEmail(values.email);                   
                     if (res.data.role === 'admin') {
                         navigate('/viewreports');
