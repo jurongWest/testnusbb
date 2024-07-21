@@ -17,7 +17,7 @@ function Login() {
 
     const [errors, setErrors] = useState({})
 
-    const { setUserEmail } = useContext(UserContext);
+    const { setUserEmail, setUserId } = useContext(UserContext);
 
     const handleInput=(event)=>{
         setValues(prev=>({...prev, [event.target.name]: [event.target.value]}))
@@ -31,7 +31,7 @@ function Login() {
             .then(res => {
                 if(res.data.message === "Login Success") {
                     setUserEmail(values.email);
-                    // Assuming the role is returned in the response data
+                    setUserId(res.data.userId);
                     if (res.data.role === 'admin') {
                         navigate('/viewreports');
                     } else {
