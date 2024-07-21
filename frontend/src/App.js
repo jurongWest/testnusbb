@@ -14,8 +14,9 @@ import Profile from './Profile';
 function App() {
   const [userEmail, setUserEmail] = useState(null);
   const [userId, setUserId] = useState(null);
+
   return (
-    <UserContext.Provider value={{ userId, userEmail, setUserEmail }}>
+    <UserContext.Provider value={{ userId, setUserId, userEmail, setUserEmail }}>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />}></Route>
