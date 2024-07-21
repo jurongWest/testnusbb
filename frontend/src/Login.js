@@ -20,7 +20,7 @@ function Login() {
     const { setUserEmail, setUserId } = useContext(UserContext);
 
     const handleInput=(event)=>{
-        setValues(prev=>({...prev, [event.target.name]: [event.target.value]}))
+        setValues(prev=>({...prev, [event.target.name]: event.target.value}))
     }
 
     const handleSubmit=(event)=>{
@@ -29,8 +29,9 @@ function Login() {
         if(errors.email === "" && errors.password ===""){
             axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/login', values)
             .then(res => {
+                console.log(res.data)
                 if(res.data.message === "Login Success") {
-                    setUserId(values.userId);
+                    setUserId(res.data.userId);
                     setUserEmail(values.email);                   
                     if (res.data.role === 'admin') {
                         navigate('/viewreports');
