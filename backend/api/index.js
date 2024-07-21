@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ['https://testnusbb-client.vercel.app', 'http://localhost:3000']
+  origin: ['https://testnusbb-client.vercel.app']
 }));
 app.options('*', cors());
 
@@ -269,6 +269,17 @@ app.put('/reports/:id', (req, res) => {
     } else {
       return res.status(200).json({ message: 'Status updated successfully' });
     }
+  });
+});
+
+app.get('/users/:id', (req, res) => {
+  const { id } = req.params;
+
+  pool.query('SELECT name, email FROM users WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows[0]);
   });
 });
 
