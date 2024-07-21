@@ -60,16 +60,20 @@ function Profile() {
       {/* Other navigation items go here */}
     </div>
     <div className="profile-container">
-    <img src={accountImg} alt="Account" className="account-image" />
-    {user && (
-      <>
-      <strong className="user-info">Username: </strong>
-      <p>{user.name}</p>
-      <strong className="user-info">User Email: </strong>
-      <p>{user.email}</p>
-      </>
-    )}
-  </div>
+  <img src={accountImg} alt="Account" className="account-image" />
+  {user && (
+    <>
+      <div className="user-info">
+        <strong>Username: </strong>
+        <p>{user.name}</p>
+      </div>
+      <div className="user-info">
+        <strong>User Email: </strong>
+        <p>{user.email}</p>
+      </div>
+    </>
+  )}
+</div>
     </div>
     </div>
     </div>

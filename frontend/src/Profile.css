@@ -3,15 +3,18 @@
     height: auto; 
     margin-top: 15%;
     margin-left: 5%;
+    margin-right: 5%;
     border-radius: 5%;
     float: left;
   }
 
   .user-info {
-    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px; 
     position: relative;
-    margin-left: 5%;
     top: 25%;
+    color: white; 
   }
 
   @media (max-width: 600px) {
