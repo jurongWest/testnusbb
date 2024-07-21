@@ -11,7 +11,7 @@ import accountImg from './image/accountimage.png';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import './Leaderboard.css';
-import './Profile.css'
+import './Profile.css'; 
 
 function Profile() {
   const [user, setUser] = useState({ name: null, email: null });

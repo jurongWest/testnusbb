@@ -18,6 +18,7 @@ import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 
 function Home() {
+  const { userId } = useContext(UserContext);
   const mapRef = useRef();
   const [selectedMarker, setSelectedMarker] = useState(null); 
   const [filter, setFilter] = useState('');
@@ -28,9 +29,6 @@ function Home() {
   const [bidet, setBidet] = useState(false);
   const [shower, setShower] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
-  
-  const userId = sessionStorage.getItem('userId');
-  
 
   useEffect(() => {
     axios.get('https://testnusbb-git-main-jurongs-projects.vercel.app/toiletdata')
