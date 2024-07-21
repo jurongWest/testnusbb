@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
                   console.error('Error executing query: ' + loginErr.stack);
                   return res.json("Error");
               }
-              return res.json({ message: "Login Success", role: data.rows[0].role });
+              return res.json({ message: "Login Success", role: data.rows[0].role, userId: data.rows[0].name });
           });
       } else {
           return res.json("Login Failed");
@@ -272,10 +272,10 @@ app.put('/reports/:id', (req, res) => {
   });
 });
 
-app.get('/users/:id', (req, res) => {
-  const { id } = req.params;
+app.get('/users/:userId', (req, res) => {
+  const { userId } = req.params;
 
-  pool.query('SELECT name, email FROM users WHERE id = $1', [id], (error, results) => {
+  pool.query('SELECT name, email FROM users WHERE name = $1', [userId], (error, results) => {
     if (error) {
       throw error;
     }
