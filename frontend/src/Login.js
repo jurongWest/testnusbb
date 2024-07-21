@@ -30,8 +30,8 @@ function Login() {
             axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/login', values)
             .then(res => {
                 if(res.data.message === "Login Success") {
-                    setUserEmail(values.email);
-                    setUserId(res.data.userId);
+                    setUserId(values.userId);
+                    setUserEmail(values.email);                   
                     if (res.data.role === 'admin') {
                         navigate('/viewreports');
                     } else {
