@@ -19,6 +19,7 @@ import StarRatings from 'react-star-ratings';
 
 function Home() {
   const { userId } = useContext(UserContext);
+  console.log('User ID:', userId);
   const mapRef = useRef();
   const [selectedMarker, setSelectedMarker] = useState(null); 
   const [filter, setFilter] = useState('');

@@ -23,6 +23,7 @@ function Profile() {
     console.log('User ID:', userId);
     axios.get(apiEndpoint)
       .then(response => {
+        console.log(response.data);
         setUser(response.data);
       })
       .catch(error => {
