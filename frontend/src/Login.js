@@ -20,7 +20,7 @@ function Login() {
     const { setUserEmail, setUserId } = useContext(UserContext);
 
     const handleInput=(event)=>{
-        setValues(prev=>({...prev, [event.target.name]: event.target.value}))
+        setValues(prev=>({...prev, [event.target.name]: [event.target.value]}))
     }
 
     const handleSubmit=(event)=>{
