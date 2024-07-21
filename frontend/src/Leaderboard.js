@@ -7,7 +7,6 @@ import leaderboard from './image/leaderboard.png';
 import home from './image/home.png';
 import pin from './image/user.png';
 import axios from 'axios';
-import StarRatings from 'react-star-ratings';
 import './Leaderboard.css';
 
 function Leaderboard() {

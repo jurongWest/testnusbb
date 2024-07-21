@@ -9,18 +9,18 @@ import home from './image/home.png';
 import pin from './image/user.png';
 import accountImg from './image/accountimage.png';
 import axios from 'axios';
-import StarRatings from 'react-star-ratings';
 import './Leaderboard.css';
 import './Profile.css'; 
 
 function Profile() {
   const [user, setUser] = useState({ name: null, email: null });
-  const { id } = useParams();
+  const { userId } = useParams();
 
   useEffect(() => {
-    const apiEndpoint = `https://testnusbb-git-main-jurongs-projects.vercel.app/users/${id}`;
+    if (userId !== undefined) {
+    const apiEndpoint = `https://testnusbb-git-main-jurongs-projects.vercel.app/users/${userId}`;
     console.log('API endpoint:', apiEndpoint);
-    console.log('User ID:', id);
+    console.log('User ID:', userId);
     axios.get(apiEndpoint)
       .then(response => {
         setUser(response.data);
@@ -28,7 +28,8 @@ function Profile() {
       .catch(error => {
         console.error('There was an error!', error);
       });
-  }, [id]);
+    }
+  }, [userId]);
 
   return (
     <div className="home-container">
