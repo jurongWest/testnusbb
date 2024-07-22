@@ -30,14 +30,14 @@ app.post('/signup', (req, res) => {
   pool.query(checkSql, [req.body.name, req.body.email], (err, data) => { // Pass both name and email
       if (err) {
           console.error('Error executing query: ' + err.stack);
-          return res.json("Error");
+          return res.json({ field: 'general', error: 'An error occurred while processing your request.' });
       }
       if (data.rows.length > 0) { // Use data.rows.length to check if a user was returned
           const existingUser = data.rows[0];
           if (existingUser.email === req.body.email) {
-              return res.json("Email already has an account");
+              return res.json({ field: 'email', error: 'Email already has an account.' });
           } else {
-              return res.json("Username is already taken");
+              return res.json({ field: 'name', error: 'Username is already taken.' });
           }
       } else {
           const sql = "INSERT INTO users (name, email, password, role) VALUES ($1,$2,$3, 'user')";
@@ -49,10 +49,10 @@ app.post('/signup', (req, res) => {
           pool.query(sql, values, (err, data) => {
               if (err) {
                   console.error('Error executing query: ' + err.stack);
-                  return res.json("Error");
+                  return res.json({ field: 'general', error: 'An error occurred while creating your account.' });
               }
               console.log('Query executed successfully, data: ', data); 
-              return res.json("Signup Success");
+              return res.json({ field: 'general', error: 'Signup Success.' });
           });
       }
   });
