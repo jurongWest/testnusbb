@@ -23,6 +23,8 @@ function Signup() {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const [serverError, setServerError] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const err = Validation(values);
@@ -34,8 +36,8 @@ function Signup() {
       )
       .catch(err => {
         if (err.response && err.response.data) {
-          // Display the error message from the server
-          alert(err.response.data);
+          // Set the server error
+          setServerError(err.response.data);
         } else {
           console.log(err);
         }
@@ -57,12 +59,14 @@ function Signup() {
                     <input type="name" placeholder='Enter Name' name='name'
                     onChange={handleInput} className='form-control rounded-0 signup-small-input'/>
                     {errors.name && <span className='text-danger'>{errors.name}</span>}
+                    {serverError.includes('Username') && <span className='text-danger'>{serverError}</span>}
                 </div>
                 <div className='mb-3'>
                     <label htmlFor="email" className='white-text'><strong>Email</strong></label>
                     <input type="email" placeholder='Enter Email' name='email'
                     onChange={handleInput} className='form-control rounded-0 small-input'/>
                     {errors.email && <span className='text-danger'>{errors.email}</span>}
+                    {serverError.includes('Email') && <span className='text-danger'>{serverError}</span>}
                 </div>
                 <div className='mb-3 position-relative'>
                   <label htmlFor="password" className='white-text'><strong>Password</strong></label>
