@@ -25,32 +25,37 @@ pool.connect(function(err) {
 });
 
 app.post('/signup', (req, res) => {
-    console.log(req.body);
-    const checkSql = 'SELECT * FROM users WHERE email = $1';
-    pool.query(checkSql, [req.body.email], (err, data) => {
-        if (err) {
-            console.error('Error executing query: ' + err.stack);
-            return res.json("Error");
-        }
-        if (data.length > 0) {
-            return res.json("You already have an account");
-        } else {
-            const sql = "INSERT INTO users (name, email, password, role) VALUES ($1,$2,$3, 'user')";
-            const values = [
-                req.body.name,
-                req.body.email,
-                req.body.password
-            ]
-            pool.query(sql, values, (err, data) => {
-                if (err) {
-                    console.error('Error executing query: ' + err.stack);
-                    return res.json("Error");
-                }
-                console.log('Query executed successfully, data: ', data); 
-                return res.json("Signup Success");
-            });
-        }
-    });
+  console.log(req.body);
+  const checkSql = 'SELECT * FROM users WHERE name = $1 OR email = $2'; // Check both name and email
+  pool.query(checkSql, [req.body.name, req.body.email], (err, data) => { // Pass both name and email
+      if (err) {
+          console.error('Error executing query: ' + err.stack);
+          return res.json("Error");
+      }
+      if (data.rows.length > 0) { // Use data.rows.length to check if a user was returned
+          const existingUser = data.rows[0];
+          if (existingUser.email === req.body.email) {
+              return res.json("Email already has an account");
+          } else {
+              return res.json("Username is already taken");
+          }
+      } else {
+          const sql = "INSERT INTO users (name, email, password, role) VALUES ($1,$2,$3, 'user')";
+          const values = [
+              req.body.name,
+              req.body.email,
+              req.body.password
+          ]
+          pool.query(sql, values, (err, data) => {
+              if (err) {
+                  console.error('Error executing query: ' + err.stack);
+                  return res.json("Error");
+              }
+              console.log('Query executed successfully, data: ', data); 
+              return res.json("Signup Success");
+          });
+      }
+  });
 });
 
 app.post('/login', (req, res) => {
