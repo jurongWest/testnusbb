@@ -36,7 +36,8 @@ app.post('/signup', (req, res) => {
           const existingUser = data.rows[0];
           if (existingUser.email === req.body.email) {
               return res.json({ field: 'email', error: 'Email already has an account.' });
-          } else {
+          }
+          if (existingUser.name === req.body.name) {
               return res.json({ field: 'name', error: 'Username is already taken.' });
           }
       } else {
