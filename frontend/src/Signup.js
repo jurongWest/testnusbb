@@ -23,7 +23,7 @@ function Signup() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit=(event)=>{
+  const handleSubmit = (event) => {
     event.preventDefault();
     const err = Validation(values);
     setErrors(err);
@@ -32,7 +32,14 @@ function Signup() {
       .then(res => 
         navigate('/')
       )
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.response && err.response.data) {
+          // Display the error message from the server
+          alert(err.response.data);
+        } else {
+          console.log(err);
+        }
+      });
     }
   }
 
