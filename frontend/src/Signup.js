@@ -29,21 +29,21 @@ function Signup() {
     event.preventDefault();
     const err = Validation(values);
     setErrors(err);
-    if(errors.name ==="" && errors.email ==="" && errors.password ===""){
+    if(err.name ==="" && err.email ==="" && err.password ===""){
       axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/signup', values)
       .then(res => 
         navigate('/')
       )
       .catch(err => {
         if (err.response && err.response.data) {
-          // Set the server error
-          setServerError(err.response.data);
+          // Set the server error for the appropriate field
+          setErrors(prevErrors => ({ ...prevErrors, [err.response.data.field]: err.response.data.error }));
         } else {
           console.log(err);
         }
       });
     }
-  }
+}
 
   return (
     <div style={{ backgroundImage: `url(${backgroundImage})` }} className='d-flex justify-content-center align-items-center vh-100'>
