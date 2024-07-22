@@ -31,16 +31,21 @@ function Signup() {
     setErrors(err);
     if(err.name ==="" && err.email ==="" && err.password ===""){
       axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/signup', values)
-      .then(res => 
-        navigate('/')
-      )
+      .then(res => {
+          if (res.data.error) {
+              // Set the server error for the appropriate field
+              setErrors(prevErrors => ({ ...prevErrors, [res.data.field]: res.data.error }));
+          } else {
+              navigate('/');
+          }
+      })
       .catch(err => {
-        if (err.response && err.response.data) {
-          // Set the server error for the appropriate field
-          setErrors(prevErrors => ({ ...prevErrors, [err.response.data.field]: err.response.data.error }));
-        } else {
-          console.log(err);
-        }
+          if (err.response && err.response.data) {
+              // Set the server error for the appropriate field
+              setErrors(prevErrors => ({ ...prevErrors, [err.response.data.field]: err.response.data.error }));
+          } else {
+              console.log(err);
+          }
       });
     }
 }
