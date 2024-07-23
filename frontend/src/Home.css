@@ -2,6 +2,7 @@
   background-color: #194274;
   display: flex;
   flex-direction: column;
+  overflow: auto;
   height: 100vh;
 }
 
