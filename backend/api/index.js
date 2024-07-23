@@ -290,7 +290,7 @@ app.get('/users/:userId', (req, res) => {
 });
 
 app.get('/reports/user', async (req, res) => {
-  const userEmail = req.query.userEmail;
+  const userEmail = req.query.useremail;
   const query = `
       SELECT * FROM reports 
       WHERE useremail = $1 
