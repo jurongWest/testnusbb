@@ -85,7 +85,8 @@ function Profile() {
   <table className="reports-table">
     <thead>
       <tr>
-        <th>Reports Made</th>
+        <th>Reported Toilet</th>
+        <th>Details</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -93,13 +94,14 @@ function Profile() {
     {reports.length > 0 ? (
         reports.map(report => (
           <tr key={report.id}>
-            <td>{report.report}</td>
+            <td>{report.toiletname}</td>
+            <td>{report.details}</td>
             <td>{report.status}</td>
           </tr>
         ))
       ) : (
         <tr>
-          <td colSpan="2">No reports made</td>
+          <td colSpan="3">No reports made</td>
         </tr>
       )}
     </tbody>
