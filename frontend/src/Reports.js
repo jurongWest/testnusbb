@@ -52,7 +52,7 @@ function Reports() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validate()) {
-      axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/reports', { ...values, email: userEmail })
+      axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/reports', { ...values, useremail: userEmail })
         .then(res => {
           
           navigate('/reports');

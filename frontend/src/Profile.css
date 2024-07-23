@@ -17,6 +17,24 @@
     color: white; 
   }
 
+  .reports-table {
+    clear: both;
+    width: 100%;
+    position: relative;
+    margin-top: 30%;
+    margin-left: 5%;
+    color: white;
+  }
+
+  .reports-table th, .reports-table td {
+    border-right: 1px solid white;
+    padding: 10px;
+  }
+  
+  .reports-table th:last-child, .reports-table td:last-child {
+    border-right: none;
+  }
+
   @media (max-width: 600px) {
     .account-image {
       width: 18%;

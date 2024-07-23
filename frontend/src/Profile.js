@@ -14,6 +14,7 @@ import './Profile.css';
 
 function Profile() {
   const [user, setUser] = useState({ name: null, email: null });
+  const [reports, setReports] = useState([]);
   const { userId } = useParams();
 
   useEffect(() => {
@@ -31,6 +32,14 @@ function Profile() {
       });
     }
   }, [userId]);
+
+  useEffect(() => {
+    if (user.email !== null) {
+      axios.get(`https://testnusbb-git-main-jurongs-projects.vercel.app/reports/user?useremail=${user.email}`)
+        .then(res => setReports(res.data))
+        .catch(err => console.error(err));
+    }
+  }, [user]);
 
   return (
     <div className="home-container">
@@ -73,6 +82,28 @@ function Profile() {
       </div>
     </>
   )}
+  <table className="reports-table">
+    <thead>
+      <tr>
+        <th>Reports Made</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {reports.length > 0 ? (
+        reports.map(report => (
+          <tr key={report.id}>
+            <td>{report.report}</td>
+            <td>{report.status}</td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="2">No reports made</td>
+        </tr>
+      )}
+    </tbody>
+  </table>
 </div>
     </div>
     </div>
