@@ -289,5 +289,21 @@ app.get('/users/:userId', (req, res) => {
   });
 });
 
+app.get('/reports/user', async (req, res) => {
+  const userEmail = req.query.userEmail;
+  const query = `
+      SELECT * FROM reports 
+      WHERE useremail = $1 
+      ORDER BY created_at DESC
+  `;
+  try {
+      const { rows } = await db.query(query, [userEmail]);
+      res.json(rows);
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'An error occurred while fetching reports.' });
+  }
+});
+
 module.exports = app;
 
