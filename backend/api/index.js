@@ -289,20 +289,24 @@ app.get('/users/:userId', (req, res) => {
   });
 });
 
-app.get('/reports/user', async (req, res) => {
+app.get('/reports/user', (req, res) => {
   const userEmail = req.query.useremail;
+
   const query = `
-      SELECT * FROM reports 
-      WHERE useremail = $1 
-      ORDER BY created_at DESC
+    SELECT toiletname, details, status 
+    FROM reports 
+    WHERE useremail = $1
   `;
-  try {
-      const { rows } = await db.query(query, [userEmail]);
-      res.json(rows);
-  } catch (err) {
+  const values = [userEmail];
+
+  pool.query(query, values, (err, result) => {
+    if (err) {
       console.error(err);
-      res.status(500).json({ error: 'An error occurred while fetching reports.' });
-  }
+      res.status(500).json({ error: 'An error occurred while fetching the reports' });
+    } else {
+      res.status(200).json(result.rows);
+    }
+  });
 });
 
 module.exports = app;
