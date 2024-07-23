@@ -296,6 +296,7 @@ app.get('/reports/user', (req, res) => {
     SELECT toiletname, details, status 
     FROM reports 
     WHERE useremail = $1
+    ORDER BY idcolumn DESC
   `;
   const values = [userEmail];
 
