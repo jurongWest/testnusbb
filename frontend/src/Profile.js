@@ -82,8 +82,10 @@ function Profile() {
       </div>
     </>
   )}
+  
   <table className="reports-table">
     <thead>
+    <h2 className="table-heading" style={{ color: 'white' }}>Reports Made</h2>
       <tr>
         <th>Reported Toilet</th>
         <th>Details</th>
