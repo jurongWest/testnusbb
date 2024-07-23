@@ -233,10 +233,10 @@ app.get("/comments/:toiletName", (req, res) => {
 });
 
 app.post('/reports', (req, res) => {
-  const { toiletName, comments } = req.body;
+  const { toiletName, comments, useremail} = req.body;
 
   const query = 'INSERT INTO reports (toiletname, details, useremail, status) VALUES ($1, $2, $3, $4)';
-  const values = [toiletName, comments, req.user?.email, 'unsolved']; // Use req.user?.email directly
+  const values = [toiletName, comments, useremail, 'unsolved']; // Use req.user?.email directly
 
   pool.query(query, values, (err, result) => {
     if (err) {
