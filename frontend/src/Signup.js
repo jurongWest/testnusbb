@@ -25,6 +25,8 @@ function Signup() {
 
   const [serverError, setServerError] = useState('');
 
+  const [successMessage, setSuccessMessage] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const err = Validation(values);
@@ -36,7 +38,7 @@ function Signup() {
               // Set the server error for the appropriate field
               setErrors(prevErrors => ({ ...prevErrors, [res.data.field]: res.data.error }));
           } else {
-              navigate('/');
+              setSuccessMessage('You have successfully created an account!');
           }
       })
       .catch(err => {
@@ -59,6 +61,7 @@ function Signup() {
         <div className='d-flex flex-column justify-content-center align-items-center signup'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Sign up</h2>
             <form action="" onSubmit={handleSubmit}>
+            {successMessage && <div className='text-success'>{successMessage}</div>}
                 <div className='mb-3'>
                     <label htmlFor="name" className='white-text'><strong>Name</strong></label>
                     <input type="name" placeholder='Enter Name' name='name'
