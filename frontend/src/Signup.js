@@ -35,14 +35,14 @@ function Signup() {
       axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/signup', values)
       .then(res => {
         console.log('Server response', res.data);
-          if (res.data.error) {
-              // Set the server error for the appropriate field
-              setErrors(prevErrors => ({ ...prevErrors, [res.data.field]: res.data.error }));
-          } else {
+        if (res.data.error && res.data.error !== 'Signup Success.') {
+            // Set the server error for the appropriate field
+            setErrors(prevErrors => ({ ...prevErrors, [res.data.field]: res.data.error }));
+        } else {
             console.log('Setting success message');
-              setSuccessMessage('You have successfully created an account!');
-          }
-      })
+            setSuccessMessage('You have successfully created an account!');
+        }
+    })
       .catch(err => {
           if (err.response && err.response.data) {
               console.log('Caught an error', err);
