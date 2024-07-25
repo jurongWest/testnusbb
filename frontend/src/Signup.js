@@ -34,6 +34,7 @@ function Signup() {
     if(err.name ==="" && err.email ==="" && err.password ===""){
       axios.post('https://testnusbb-git-main-jurongs-projects.vercel.app/signup', values)
       .then(res => {
+        console.log('Server response', res.data);
           if (res.data.error) {
               // Set the server error for the appropriate field
               setErrors(prevErrors => ({ ...prevErrors, [res.data.field]: res.data.error }));
@@ -48,6 +49,7 @@ function Signup() {
               setErrors(prevErrors => ({ ...prevErrors, [err.response.data.field]: err.response.data.error }));
           } else {
               console.log(err);
+              setServerError('An error occurred. Please try again later.');
           }
       });
     }
