@@ -64,7 +64,7 @@ function Signup() {
         <div className='d-flex flex-column justify-content-center align-items-center signup'>
             <h2 style={{ color: "White", fontFamily: 'Roboto, sans-serif' }}>Sign up</h2>
             <form action="" onSubmit={handleSubmit}>
-            {successMessage && <div className='text-success'>{successMessage}</div>}
+            {successMessage && <div style={{backgroundColor: 'white', color: 'green'}}>{successMessage}</div>}
                 <div className='mb-3'>
                     <label htmlFor="name" className='white-text'><strong>Name</strong></label>
                     <input type="name" placeholder='Enter Name' name='name'
