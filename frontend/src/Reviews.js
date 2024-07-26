@@ -22,7 +22,11 @@ function Review() {
   const [formKey, setFormKey] = useState(0);
 
   const handleInput=(event)=>{
-    setValues(prev=>({...prev, [event.target.name]: event.target.value}))
+    if (event.target.name === 'comments' && event.target.value.length === 500) {
+      setErrors(prev => ({ ...prev, comments: 'You have reached the maximum character limit of 500' }));
+    } else {
+      setValues(prev=>({...prev, [event.target.name]: event.target.value}))
+    }
   }
 
   const loadOptions = (inputValue, callback) => {
@@ -112,7 +116,7 @@ function Review() {
                 <div className='mb-3'>
                     <label><strong>Comments</strong></label>
                     <textarea placeholder='Enter Comments' name='comments'
-                    onChange={handleInput} className='form-control rounded-0'/>
+                    onChange={handleInput} className='form-control rounded-0' maxLength={500}/>
                     {errors.comments && <span className='text-danger'>{errors.comments}</span>}
                 </div>
                 <button className='btn btn-primary w-100 rounded-0'>Submit</button>                
