@@ -164,6 +164,10 @@ function Home() {
             <img src={home} alt="Home" />
             <p>Home</p>
           </Link>
+          <Link to={`/profile/${userId}`} className="bookmark-button custom-link">
+            <img src={pin} alt="Bookmarks" />
+            <p>Profile</p>
+          </Link>
         <Link to="/leaderboard" className="leader-button custom-link">
             <img src={leaderboard} alt="Leaderboard" />
             <p>Leaderboard</p>
@@ -172,10 +176,7 @@ function Home() {
             <img src={report} alt="Report" />
             <p>Reports</p>
           </Link>
-          <Link to={`/profile/${userId}`} className="bookmark-button custom-link">
-            <img src={pin} alt="Bookmarks" />
-            <p>Profile</p>
-          </Link>
+          
         {/* Other navigation items go here */}
       </div>
       <div className="map-wrapper">
