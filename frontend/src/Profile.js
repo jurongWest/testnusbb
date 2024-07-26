@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import logo from './image/NUSBB.png';
 import logotext from './image/NUSBathroomBuddyText.png';
@@ -11,11 +10,13 @@ import accountImg from './image/accountimage.png';
 import axios from 'axios';
 import './Leaderboard.css';
 import './Profile.css'; 
+import { useContext } from 'react';
+import UserContext from './UserContext';
 
 function Profile() {
   const [user, setUser] = useState({ name: null, email: null });
   const [reports, setReports] = useState([]);
-  const { userId } = useParams();
+  const { userId } = useContext(UserContext);
 
   useEffect(() => {
     if (userId !== undefined) {
@@ -54,6 +55,10 @@ function Profile() {
           <img src={home} alt="Home" />
           <p>Home</p>
         </Link>
+        <Link to={`/profile/${userId}`} className="bookmark-button custom-link">
+            <img src={pin} alt="Bookmarks" />
+            <p>Profile</p>
+          </Link>
       <Link to="/leaderboard" className="leader-button custom-link">
           <img src={leaderboard} alt="Leaderboard" />
           <p>Leaderboard</p>
@@ -61,10 +66,6 @@ function Profile() {
       <Link to="/reports" className="navi-button custom-link">
           <img src={report} alt="Report" />
           <p>Reports</p>
-        </Link>
-        <Link to="/profile" className="bookmark-button custom-link">
-          <img src={pin} alt="Bookmarks" />
-          <p>Profile</p>
         </Link>
       {/* Other navigation items go here */}
     </div>
