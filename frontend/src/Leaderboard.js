@@ -25,10 +25,19 @@ function Leaderboard() {
         // Filter out toilets with a null rating
         const filteredData = data.filter(toilet => toilet.rating !== null);
   
-        // Sort the data by rating in descending order and take the first 10 items
-        const sortedData = filteredData.sort((a, b) => b.rating - a.rating).slice(0, 10);
+        // Sort the data by rating in descending order
+        const sortedData = filteredData.sort((a, b) => b.rating - a.rating);
   
-        setLeaderboardData(sortedData);
+        // Take the first 10 items
+        const topToilets = sortedData.slice(0, 10);
+  
+        // Get the rating of the last toilet on the leaderboard
+        const lastRating = topToilets[topToilets.length - 1].rating;
+  
+        // Include any toilets with the same rating as the last one on the leaderboard
+        const finalData = sortedData.filter(toilet => toilet.rating >= lastRating);
+  
+        setLeaderboardData(finalData);
       })
       .catch(error => {
         console.error('Error fetching data: ', error);
