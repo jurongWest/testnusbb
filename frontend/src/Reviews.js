@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ReactStars from "react-rating-stars-component";
 import AsyncSelect from 'react-select/async';
@@ -119,7 +119,8 @@ function Review() {
                     onChange={handleInput} className='form-control rounded-0' maxLength={500}/>
                     {errors.comments && <span className='text-danger'>{errors.comments}</span>}
                 </div>
-                <button className='btn btn-primary w-100 rounded-0'>Submit</button>                
+                <button className='btn btn-primary w-100 rounded-0'>Submit</button>
+                <Link to="/home" className="btn btn-secondary w-100 rounded-0 mt-2">Return to Home</Link>                
             </form>
         </div>
     </div>
