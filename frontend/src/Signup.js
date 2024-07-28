@@ -84,10 +84,11 @@ function Signup() {
                   <input type={showPassword ? "text" : "password"} placeholder='Enter Password' name='password'
                   onChange={handleInput} className='form-control rounded-0 small-input'/>
                   <button type="button" onClick={() => setShowPassword(!showPassword)} 
-                    style={{ position: 'absolute', top: '70%', right: '10px', transform: 'translateY(-50%)' }}>
-                    {showPassword ? "Hide" : "Show"}
+                    style={{ position: 'relative', marginTop: '5px'}}>
+                    {showPassword ? "Hide Password" : "Show Password"}
                   </button>
                   {errors.password && <span className='text-danger'>{errors.password}</span>}
+                  <p className="white-text">Password must contain at least 8 characters, including letters and numbers</p>
                 </div>
                 <button className='btn btn-primary w-100 rounded-0'>Sign up</button>
                 <p className='white-text'>Discover NUS Computing toilets with us!</p>

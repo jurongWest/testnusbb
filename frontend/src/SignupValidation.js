@@ -10,7 +10,7 @@ function Validation(values) {
     }
 
     if (values.email === "") {
-        error.email = "Name should not be empty"
+        error.email = "Email should not be empty"
     } else if (!email_pattern.test(values.email)) {
         error.email = "Email does not match"
     } else {
@@ -20,7 +20,7 @@ function Validation(values) {
     if (values.password === "") {
         error.password = "Password should not be empty"
     } else if (!password_pattern.test(values.password)) {
-        error.password = "Password must contain at least 8 characters, including letters and numbers"
+        error.password = "Check that your password fufils the requirements"
     } else {
         error.password = ""
     }
